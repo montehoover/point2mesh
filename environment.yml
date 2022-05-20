@@ -4,7 +4,7 @@ channels:
   - defaults
   - conda-forge
   - fvcore
-  - pytorch3d
+  - pytorch3d/label/archived
 dependencies:
   - python=3.8.2
   - numpy=1.18.1
