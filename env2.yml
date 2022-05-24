@@ -8,8 +8,8 @@ dependencies:
   - _libgcc_mutex=0.1=main
   - _openmp_mutex=5.1=1_gnu
   - blas=1.0=mkl
-  - ca-certificates=2022.5.18.1=ha878542_0
-  - certifi=2022.5.18.1=py38h578d9bd_0
+  - ca-certificates=2022.4.26=h06a4308_0
+  - certifi=2022.5.18.1=py38h06a4308_0
   - cudatoolkit=10.1.243=h6bb024c_0
   - freetype=2.11.0=h70c0345_0
   - fvcore=0.1.5.post20220512=pyhd8ed1ab_0
@@ -38,7 +38,7 @@ dependencies:
   - ninja-base=1.10.2=hd09550d_5
   - numpy=1.18.1=py38h4f9e942_0
   - numpy-base=1.18.1=py38hde5b4d6_1
-  - openssl=1.1.1o=h166bdaf_0
+  - openssl=1.1.1o=h7f8727e_0
   - pillow=9.0.1=py38h22f2fdc_0
   - pip=21.2.4=py38h06a4308_0
   - portalocker=2.3.0=py38h06a4308_0
@@ -48,6 +48,7 @@ dependencies:
   - pytorch3d=0.2.0=py38_cu101_pyt14
   - pyyaml=6.0=py38h7f8727e_1
   - readline=8.1.2=h7f8727e_1
+  - scipy=1.6.2=py38h91f5cce_0
   - setuptools=61.2.0=py38h06a4308_0
   - six=1.16.0=pyhd3eb1b0_1
   - sqlite=3.38.3=hc218d9a_0
