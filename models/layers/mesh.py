@@ -333,9 +333,11 @@ class PartMesh:
         if vs_groups is not None: #TODO is this neccesary?
             self.vs_groups = vs_groups
         else:
-            if n != -1:
-                self.vs_groups = PartMesh.grid_segment(self.main_mesh.vs, n=n)
+            if num_parts > 16:
+                # Segment the space into larger 3D grids
+                self.vs_groups = PartMesh.grid_segment(self.main_mesh.vs, n=num_parts)
             else:
+                # Segment the space into halfs, quarters, eighths, or 16ths
                 self.vs_groups = PartMesh.segment_shape(self.main_mesh.vs, seg_num=num_parts)
         self.n_submeshes = torch.max(self.vs_groups).item() + 1
         self.sub_mesh_index = []
@@ -472,10 +474,14 @@ class PartMesh:
             eighth += 2 * (diff[:, 1] > 0).float()
         if seg_num >= 8:
             eighth += 4 * (diff[:, 2] > 0).float()
+        if seg_num >= 16:
+            eighth += 8 * (diff[:, 0] > diff[:, 1]).float()
         return eighth.long()
 
     @staticmethod
-    def grid_segment(vs: torch.Tensor, n):
+    def grid_segment(vs: torch.Tensor, segments):
+        '''Segment the mesh by a grid of voxels. Will create segments of 8, 27, 64, etc.'''
+        n = np.ceil(np.cbrt(segments))
         maxx, _ = vs.max(dim=0)
         minn, _ = vs.min(dim=0)
         unit = (maxx - minn) / n
