@@ -5,12 +5,43 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "main.py",
+            "type": "python",
+            "request": "launch",
+            "module": "main",
+            "justMyCode": true,
+            "args": [ 
+                "--input-pc",
+                "data/speaker_pointcloud.ply",
+                "--initial-mesh",
+                "./data/speaker_pointcloud_hull.obj",
+                "--save-path",
+                "./checkpoints/speaker",
+                "--iterations",
+                "6000",
+                "--faces-to-part", 
+                "8000",
+                "16000",
+                "20000",
+                "24000"
+            ]
+        },
+        {
             "name": "convex_hull.py",
             "type": "python",
             "request": "launch",
             "module": "scripts.process_data.convex_hull",
             "justMyCode": true,
-            "args": ["--i", "data/drill_pointcloud.ply",  "--faces", "1000", "--manifold-path", "~/code/Manifold/build/"]
+            "args": [
+                "--i",
+                "data/speaker_pointcloud.ply",
+                "--faces",
+                "100000",
+                "--manifold-path",
+                "~/code/Manifold/build/",
+                "--manifold-res",
+                "25000"
+            ]
         }
     ]
 }
