@@ -14,7 +14,7 @@ def manifold_upsample(mesh, save_path, Mesh, num_faces=2000, res=3000, simplify=
     opts = ' ' + str(res) if res is not None else ''
 
     manifold_script_path = os.path.join(MANIFOLD_DIR, 'manifold')
-    if not os.path.exists(manifold_script_path):
+    if not os.path.exists(os.path.expanduser(manifold_script_path)):
         raise FileNotFoundError(f'{manifold_script_path} not found')
     cmd = "{} {} {}".format(manifold_script_path, fname, temp_file + opts)
     os.system(cmd)
