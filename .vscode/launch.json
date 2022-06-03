@@ -5,42 +5,88 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "main.py",
+            "name": "main.py sphere642",
             "type": "python",
             "request": "launch",
             "module": "main",
             "justMyCode": true,
             "args": [ 
                 "--input-pc",
-                "data/speaker_pointcloud.ply",
+                "data/sphere642_pointcloud.ply",
                 "--initial-mesh",
-                "./data/speaker_pointcloud_hull.obj",
+                "data/sphere642_pointcloud_hull.obj",
                 "--save-path",
-                "./checkpoints/speaker",
+                "./checkpoints/sphere642",
                 "--iterations",
-                "6000",
-                "--faces-to-part", 
-                "8000",
-                "16000",
-                "20000",
-                "24000"
+                "6000"
             ]
         },
         {
-            "name": "convex_hull.py",
+            "name": "main.py earcup",
+            "type": "python",
+            "request": "launch",
+            "module": "main",
+            "justMyCode": true,
+            "args": [ 
+                "--input-pc",
+                "data/earcup_vertices.ply",
+                "--initial-mesh",
+                "data/earcup_vertices_hull.obj",
+                "--save-path",
+                "./checkpoints/earcup",
+                "--iterations",
+                "6000"
+            ]
+        },
+        {
+            "name": "main.py giraffe",
+            "type": "python",
+            "request": "launch",
+            "module": "main",
+            "justMyCode": true,
+            "args": [ 
+                "--input-pc",
+                "data/giraffe.ply",
+                "--initial-mesh",
+                "data/giraffe_initmesh.obj",
+                "--save-path",
+                "./checkpoints/giraffe",
+                "--iterations",
+                "6000"
+            ]
+        },
+        {
+            "name": "convex_hull.py earcup",
             "type": "python",
             "request": "launch",
             "module": "scripts.process_data.convex_hull",
             "justMyCode": true,
             "args": [
                 "--i",
-                "data/speaker_pointcloud.ply",
+                "data/earcup_vertices.ply",
                 "--faces",
-                "100000",
+                "10000",
                 "--manifold-path",
                 "~/code/Manifold/build/",
-                "--manifold-res",
-                "25000"
+                // "--manifold-res",
+                // "25000"
+            ]
+        },
+        {
+            "name": "convex_hull.py sphere642",
+            "type": "python",
+            "request": "launch",
+            "module": "scripts.process_data.convex_hull",
+            "justMyCode": true,
+            "args": [
+                "--i",
+                "data/sphere642_pointcloud.ply",
+                "--faces",
+                "10000",
+                "--manifold-path",
+                "~/code/Manifold/build/",
+                // "--manifold-res",
+                // "25000"
             ]
         }
     ]
