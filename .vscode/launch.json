@@ -56,23 +56,6 @@
             ]
         },
         {
-            "name": "convex_hull.py earcup",
-            "type": "python",
-            "request": "launch",
-            "module": "scripts.process_data.convex_hull",
-            "justMyCode": true,
-            "args": [
-                "--i",
-                "data/earcup_vertices.ply",
-                "--faces",
-                "10000",
-                "--manifold-path",
-                "~/code/Manifold/build/",
-                // "--manifold-res",
-                // "25000"
-            ]
-        },
-        {
             "name": "convex_hull.py sphere642",
             "type": "python",
             "request": "launch",
