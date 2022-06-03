@@ -88,6 +88,23 @@
                 // "--manifold-res",
                 // "25000"
             ]
-        }
+        },
+        {
+            "name": "convex_hull.py earcup",
+            "type": "python",
+            "request": "launch",
+            "module": "scripts.process_data.convex_hull",
+            "justMyCode": true,
+            "args": [
+                "--i",
+                "data/earcup_pointcloud.ply",
+                "--faces",
+                "30000",
+                "--manifold-path",
+                "~/code/Manifold/build/",
+                // "--manifold-res",
+                // "25000"
+            ]
+        },
     ]
 }
