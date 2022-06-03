@@ -123,5 +123,22 @@
                 // "25000"
             ]
         },
+        {
+            "name": "convex_hull.py ear",
+            "type": "python",
+            "request": "launch",
+            "module": "scripts.process_data.convex_hull",
+            "justMyCode": true,
+            "args": [
+                "--i",
+                "data/ear_pointcloud.ply",
+                "--faces",
+                "10000",
+                "--manifold-path",
+                "~/code/Manifold/build/",
+                // "--manifold-res",
+                // "25000"
+            ]
+        },
     ]
 }
