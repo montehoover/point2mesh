@@ -5,6 +5,23 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "main.py giraffe_bad",
+            "type": "python",
+            "request": "launch",
+            "module": "main",
+            "justMyCode": true,
+            "args": [ 
+                "--input-pc",
+                "data/giraffe_bad_pointcloud.ply",
+                "--initial-mesh",
+                "data/giraffe_bad_pointcloud_hull.obj",
+                "--save-path",
+                "./checkpoints/sphere642",
+                "--iterations",
+                "6000"
+            ]
+        },
+        {
             "name": "main.py sphere642",
             "type": "python",
             "request": "launch",
@@ -83,6 +100,23 @@
                 "data/earcup_pointcloud.ply",
                 "--faces",
                 "30000",
+                "--manifold-path",
+                "~/code/Manifold/build/",
+                // "--manifold-res",
+                // "25000"
+            ]
+        },
+        {
+            "name": "convex_hull.py giraffe_bad",
+            "type": "python",
+            "request": "launch",
+            "module": "scripts.process_data.convex_hull",
+            "justMyCode": true,
+            "args": [
+                "--i",
+                "data/giraffe_bad_pointcloud.ply",
+                "--faces",
+                "10000",
                 "--manifold-path",
                 "~/code/Manifold/build/",
                 // "--manifold-res",
