@@ -25,8 +25,11 @@ class Options:
         parser.add_argument('--upsamp', type=int, metavar='N', default=1000, help='upsample each {upsamp} iteration')
         parser.add_argument('--max-faces', type=int, metavar='N', default=10000,
                             help='maximum number of faces to upsample to')
-        parser.add_argument('--faces-to-part', nargs='+', default=[8000, 16000, 20000, 24000], type=int,
-                            help='after how many faces to split')
+        # parser.add_argument('--faces-to-part', nargs='+', default=[8000, 16000, 20000], type=int,
+        #                     help='after how many faces to split')
+        parts_group = parser.add_mutually_exclusive_group()
+        parts_group.add_argument("--num-parts", type=int, default=-1, help='number of parts to segment mesh into to avoid running out of memory')
+        parts_group.add_argument('--part-size', type=int, default=8000, help='after how many faces to split into parts to avoid running out of memory')
         # HYPER PARAMETERS - NETWORK
         parser.add_argument('--lr', type=float, metavar='1eN', default=1.1e-4, help='learning rate')
         parser.add_argument('--ang-wt', type=float, metavar='1eN', default=1e-1,
@@ -66,10 +69,19 @@ class Options:
             for k, v in sorted(vars(self.args).items()):
                 f.write('%s: %s\n' % (str(k), str(v)))
 
+    # def get_num_parts(self, num_faces):
+    #     lookup_num_parts = [1, 2, 4, 8]
+    #     num_parts = lookup_num_parts[np.digitize(num_faces, self.args.faces_to_part, right=True)]
+    #     return num_parts
+
+    # Return number of parts to segment mesh into based on size of mesh
     def get_num_parts(self, num_faces):
-        lookup_num_parts = [1, 2, 4, 8, 16]
-        num_parts = lookup_num_parts[np.digitize(num_faces, self.args.faces_to_part, right=True)]
+        if self.args.num_parts == -1:
+            num_parts = int(np.ceil(num_faces / self.args.part_size))
+        else:
+            num_parts = self.args.num_parts
         return num_parts
+
 
     def dtype(self):
         return torch.float32
