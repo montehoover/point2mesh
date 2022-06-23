@@ -1,0 +1,7 @@
+Notes:
+
+1. The number of times you run manifold seems to be the biggest predictor of quality.
+ - Runing the samples on default typically resulted in them being upsampled 2-4 times. I think it wasn't the actual upsampling that helped but rather the fact that Manifold was being run to smooth out the mesh. I could test this by making no upsamplings but still calling Manifold.
+ - Running the samples with a denser initial hull caused manifold to be run less frequently and resulted in spikiness
+2. Manifold smoothing and upsampling should be decoupled. Also, upsampling is currently being done at a fixed rate of 1.5 times the current number of faces. There might be better schedules for upsampling, like upsampling by smaller ammounts spread out over more of the runtime, or waiting until later in the runtime to start upsampling.
+3. Beamgap seams to make things a little balloon-y. It also seems to need more iterations to get a good result than an equivalent run without it.
